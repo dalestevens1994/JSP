@@ -31,11 +31,11 @@ io.on('connection', function(socket){
 	});
 	
 	function updateNicknames(){
-		io.sockets.emit('usernames', nicknames);
+		io.emit('usernames', nicknames);
 	}
 
 	socket.on('send_message', function(data){
-		io.sockets.emit('new_message', {msg: data, nick: socket.nickname});
+		io.emit('new_message', {msg: data, nick: socket.nickname});
 	});
 	
 	socket.on('disconnect', function(data){
