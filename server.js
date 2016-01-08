@@ -18,6 +18,7 @@ console.log('################################################');
 
 io.on('connection', function(socket){
 	socket.on('new user', function(data, callback){
+		console.log('new user');
 		if (nicknames.indexOf(data) != -1){
 			callback(false);
 		} else{
