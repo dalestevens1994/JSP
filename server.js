@@ -3,7 +3,9 @@ var	nicknames = [];
 
 //Start the server!!!!
 var port = 8080;
-var io = require('/usr/local/lib/node_modules/socket.io').listen(port).sockets;
+//var io = require('/usr/local/lib/node_modules/socket.io').listen(port).sockets;
+var io = require('socket.io').listen(port).sockets;
+
 
 console.log('################################################');
 console.log('          Starting Server v.1.1.0 Beta          ');
