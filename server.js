@@ -1,20 +1,20 @@
-var express = require('express'),
-	app = express(),
-	server = require('http').createServer(app),
-	io = require('socket.io').listen(server),
-	nicknames = [];
 
-server.listen(8888, function(){
-	console.log("server started at port 8888")
-});
+var	nicknames = [];
+
+//Start the server!!!!
+var port = 8080;
+var io = require('/usr/local/lib/node_modules/socket.io').listen(port).sockets;
+
+console.log('################################################');
+console.log('          Starting Server v.1.1.0 Beta          ');
+console.log('     Accepting connections on port : ' + port    );
+console.log('################################################');
 
 // app.get('/', function(req, res){
 // 	res.sendfile(__dirname + '/index.html');
 // });
 
-app.use(express.static('public'));
-
-io.sockets.on('connection', function(socket){
+io.on('connection', function(socket){
 	socket.on('new user', function(data, callback){
 		if (nicknames.indexOf(data) != -1){
 			callback(false);
@@ -30,7 +30,7 @@ io.sockets.on('connection', function(socket){
 		io.sockets.emit('usernames', nicknames);
 	}
 
-	socket.on('send message', function(data){
+	socket.on('send_message', function(data){
 		io.sockets.emit('new message', {msg: data, nick: socket.nickname});
 	});
 	
