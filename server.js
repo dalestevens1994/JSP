@@ -17,7 +17,10 @@ console.log('################################################');
 // });
 
 io.on('connection', function(socket){
+<<<<<<< Updated upstream
 	console.log('new connection');
+=======
+>>>>>>> Stashed changes
 	socket.on('new_user', function(data, callback){
 		console.log('new_user');
 		if (nicknames.indexOf(data) != -1){

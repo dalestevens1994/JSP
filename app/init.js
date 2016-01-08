@@ -1,10 +1,10 @@
 var socket = io.connect('http://127.0.0.1:8080');
-var nickError = $('#nickError');
-var nickBox = $('#nickname');
-var users = $('#users');
-var messageForm = $('#send-message');
-var messageBox = $('#message');
-var chat = $('#chat');
+var nickError = '#nickError';
+var nickBox = '#nickname';
+var users = '#users';
+var messageForm = '#send-message';
+var messageBox = '#message';
+var chat = '#chat';
             
 $(document).ready(function(){
     console.log('loading app');
