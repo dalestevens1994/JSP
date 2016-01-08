@@ -17,8 +17,9 @@ console.log('################################################');
 // });
 
 io.on('connection', function(socket){
-	socket.on('new user', function(data, callback){
-		console.log('new user');
+	console.log('new connection');
+	socket.on('new_user', function(data, callback){
+		console.log('new_user');
 		if (nicknames.indexOf(data) != -1){
 			callback(false);
 		} else{
@@ -34,7 +35,7 @@ io.on('connection', function(socket){
 	}
 
 	socket.on('send_message', function(data){
-		io.sockets.emit('new message', {msg: data, nick: socket.nickname});
+		io.sockets.emit('new_message', {msg: data, nick: socket.nickname});
 	});
 	
 	socket.on('disconnect', function(data){
