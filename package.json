@@ -1,0 +1,10 @@
+{
+	"name": "Just_Chess",
+	"version": "1.0.0",
+	"main": "server.js",
+	"private": "true",
+	"dependencies": {
+		"socket.io": "1.3.7",
+		"express": "4.13.3"
+	}
+}

@@ -1,0 +1,208 @@
+<html lang="en">
+    <head>
+        
+        <title>Chess.Js</title>
+
+        <link rel="stylesheet" href="styles.css">
+        <script src="jquery-1.11.3.js"></script>
+    	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+              
+    </head>
+    <body>
+        
+    <div id="wrapper">
+
+        <div class="row">
+                <table id="board">
+                    <tr>
+                        <td class="boardedge"></td> 
+                        <td class="boardedge">A</td>
+                        <td class="boardedge">B</td>
+                        <td class="boardedge">C</td>
+                        <td class="boardedge">D</td>
+                        <td class="boardedge">E</td>
+                        <td class="boardedge">F</td>
+                        <td class="boardedge">G</td>
+                        <td class="boardedge">H</td>
+                        <td class="boardedge"></td> 
+                    </tr>
+                    <tr>
+                        <td class="boardedge">1</td>
+                        <td class="sq" id="a1"><img src="pieces/black/rook_black.svg" class="rook_size" /></td>
+                        <td class="sq2" id="a2"><img src="pieces/black/knight_black.svg" class="knight_size" /></td>
+                        <td class="sq" id="a3"><img src="pieces/black/bishop_black.svg" class="bishop_size" /></td>
+                        <td class="sq2" id="a4"><img src="pieces/black/queen_black.svg" class="piece_size" /></td>
+                        <td class="sq" id="a5"><img src="pieces/black/king_black.svg" class="piece_size" /></td>
+                        <td class="sq2" id="a6"><img src="pieces/black/bishop_black.svg" class="bishop_size" /></td>
+                        <td class="sq" id="a7"><img src="pieces/black/knight_black.svg" class="knight_size" /></td>
+                        <td class="sq2" id="a8"><img src="pieces/black/rook_black.svg" class="rook_size" /></td>
+                        <td class="boardedge">1</td>
+                    </tr>
+                    <tr>
+                        <td class="boardedge">2</td>
+                        <td class="sq2" id="b1"><img src="pieces/black/pawn_black.svg" class="pawn_size" /></td>
+                        <td class="sq" id="b2"><img src="pieces/black/pawn_black.svg" class="pawn_size" /></td>
+                        <td class="sq2" id="b3"><img src="pieces/black/pawn_black.svg" class="pawn_size" /></td>
+                        <td class="sq" id="b4"><img src="pieces/black/pawn_black.svg" class="pawn_size" /></td>
+                        <td class="sq2" id="b5"><img src="pieces/black/pawn_black.svg" class="pawn_size" /></td>
+                        <td class="sq" id="b6"><img src="pieces/black/pawn_black.svg" class="pawn_size" /></td>
+                        <td class="sq2" id="b7"><img src="pieces/black/pawn_black.svg" class="pawn_size" /></td>
+                        <td class="sq" id="b8"><img src="pieces/black/pawn_black.svg" class="pawn_size" /></td>
+                        <td class="boardedge">2</td>
+                    </tr>
+                    <tr>
+                        <td class="boardedge">3</td> 
+                        <td class="sq" id="c1"></td>
+                        <td class="sq2" id="c2"></td>
+                        <td class="sq" id="c3"></td>
+                        <td class="sq2" id="c4"></td>
+                        <td class="sq" id="c5"></td>
+                        <td class="sq2" id="c6"></td>
+                        <td class="sq" id="c7"></td>
+                        <td class="sq2" id="c8"></td>
+                        <td class="boardedge">3</td>
+                    </tr>
+                    <tr>
+                        <td class="boardedge">4</td> 
+                        <td class="sq2" id="d1"></td>
+                        <td class="sq" id="d2"></td>
+                        <td class="sq2" id="d3"></td>
+                        <td class="sq" id="d4"></td>
+                        <td class="sq2" id="d5"></td>
+                        <td class="sq" id="d6"></td>
+                        <td class="sq2" id="d7"></td>
+                        <td class="sq" id="d8"></td>
+                        <td class="boardedge">4</td> 
+                    </tr>
+                    <tr>
+                        <td class="boardedge">5</td> 
+                        <td class="sq" id="e1"></td>
+                        <td class="sq2" id="e2"></td>
+                        <td class="sq" id="e3"></td>
+                        <td class="sq2" id="e4"></td>
+                        <td class="sq" id="e5"></td>
+                        <td class="sq2" id="e6"></td>
+                        <td class="sq" id="e7"></td>
+                        <td class="sq2" id="e8"></td>
+                        <td class="boardedge">5</td> 
+                    </tr>
+                    <tr>
+                        <td class="boardedge">6</td> 
+                        <td class="sq2" id="f1"></td>
+                        <td class="sq" id="f2"></td>
+                        <td class="sq2" id="f3"></td>
+                        <td class="sq" id="f4"></td>
+                        <td class="sq2" id="f5"></td>
+                        <td class="sq" id="f6"></td>
+                        <td class="sq2" id="f7"></td>
+                        <td class="sq" id="f8"></td>
+                        <td class="boardedge">6</td> 
+                    </tr>
+                    <tr>
+                        <td class="boardedge">7</td> 
+                        <td class="sq" id="g1"><img src="pieces/white/pawn_white.svg" class="pawn_size" /></td>
+                        <td class="sq2" id="g2"><img src="pieces/white/pawn_white.svg" class="pawn_size" /></td>
+                        <td class="sq" id="g3"><img src="pieces/white/pawn_white.svg" class="pawn_size" /></td>
+                        <td class="sq2" id="g4"><img src="pieces/white/pawn_white.svg" class="pawn_size" /></td>
+                        <td class="sq" id="g5"><img src="pieces/white/pawn_white.svg" class="pawn_size" /></td>
+                        <td class="sq2" id="g6"><img src="pieces/white/pawn_white.svg" class="pawn_size" /></td>
+                        <td class="sq" id="g7"><img src="pieces/white/pawn_white.svg" class="pawn_size" /></td>
+                        <td class="sq2" id="g8"><img src="pieces/white/pawn_white.svg" class="pawn_size" /></td>
+                        <td class="boardedge">7</td> 
+                    </tr>
+                    <tr>
+                        <td class="boardedge">8</td> 
+                        <td class="sq2" id="h1"><img src="pieces/white/rook_white.svg" class="rook_size" /></td>
+                        <td class="sq" id="h2"><img src="pieces/white/knight_white.svg" class="knight_size" /></td>
+                        <td class="sq2" id="h3"><img src="pieces/white/bishop_white.svg" class="bishop_size" /></td>
+                        <td class="sq" id="h4"><img src="pieces/white/queen_white.svg" class="piece_size" /></td>
+                        <td class="sq2" id="h5"><img src="pieces/white/king_white.svg" class="piece_size" /></td>
+                        <td class="sq" id="h6"><img src="pieces/white/bishop_white.svg" class="bishop_size" /></td>
+                        <td class="sq2" id="h7"><img src="pieces/white/knight_white.svg" class="knight_size" /></td>
+                        <td class="sq" id="h8"><img src="pieces/white/rook_white.svg" class="rook_size" /></td>
+                        <td class="boardedge">8</td> 
+                    </tr>
+                    <tr>
+                        <td class="boardedge"></td> 
+                        <td class="boardedge">A</td>
+                        <td class="boardedge">B</td>
+                        <td class="boardedge">C</td>
+                        <td class="boardedge">D</td>
+                        <td class="boardedge">E</td>
+                        <td class="boardedge">F</td>
+                        <td class="boardedge">G</td>
+                        <td class="boardedge">H</td>
+                        <td class="boardedge"></td> 
+                    </tr>
+                </table>
+            </div>
+
+        <div id="nickWrap">
+            <p>Enter a username:</p>
+            <p id="nickError"></p>
+            <form id="setNick">
+                <input size="35" id="nickname"</input>
+                <input type="submit"></input>
+            </form>
+        </div>
+
+        <div id="contentWrap">
+            <div id="chatWrap">
+                <div id="chat"></div>
+                <form id="send-message">
+                    <input size="35" id="message"</input>
+                    <input type="submit"></input>
+                </form>
+            </div>
+            <div id="users"></div>
+        </div>
+
+    </div>
+
+    <script>
+       jQuery(function($){
+            var socket = io.connect();
+            var $nickForm = $('#setNick');
+            var $nickError = $('#nickError');
+            var $nickBox = $('#nickname');
+            var $users = $('#users');
+            var $messageForm = $('#send-message');
+            var $messageBox = $('#message');
+            var $chat = $('#chat');
+            
+            $nickForm.submit(function(e){
+                e.preventDefault();
+                socket.emit('new user', $nickBox.val(), function(data){
+                    if(data){
+                        $('#nickWrap').hide();
+                        $('#contentWrap').show();
+                    } else{
+                        $nickError.html('That username is already taken!  Try again.');
+                    }
+                });
+                $nickBox.val('');
+            });
+            
+            socket.on('usernames', function(data){
+                var html = '';
+                for(i=0; i < data.length; i++){
+                    html += data[i] + '<br/>'
+                }
+                $users.html(html);
+            });
+            
+            $messageForm.submit(function(e){
+                e.preventDefault();
+                socket.emit('send message', $messageBox.val());
+                $messageBox.val('');
+            });
+            
+            socket.on('new message', function(data){
+                $chat.append('<b>' + data.nick + ': </b>' + data.msg + "<br/>");
+            });
+        });
+    </script>
+
+    </body>
+</html>
