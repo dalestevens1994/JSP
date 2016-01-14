@@ -84,7 +84,7 @@ io.on('connection', function(socket){
 		}
 	}
 	
-	//pass the nikcname from the client and store nickname into the nicknames array
+	//pass the nickname from the client and store nickname into the nicknames array
 	function updateNicknames(nickname){
 		if (nicknames.length == 0){
 			nicknames.push(nickname);
