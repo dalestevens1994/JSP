@@ -25,8 +25,12 @@ io.on('connection', function(socket){
 		} else{
 			callback(true);
 			socket.nickname = data;
-			nicknames.push(socket.nickname);
-			updateNicknames();
+
+			//check to make sure you get the nicknames object
+			console.log(socket.nickname);
+
+			//run nicknames function
+			updateNicknames(socket.nickname);
 		}
 	});
 
@@ -80,9 +84,12 @@ io.on('connection', function(socket){
 		}
 	}
 	
-	function updateNicknames(){
+	//pass the nikcname from the client and store nickname into the nicknames array
+	function updateNicknames(nickname){
 		if (nicknames.length == 0){
-			players[0] = nicknames;
+			nicknames.push(nickname);
+
+			//players[0] = nicknames;
 			console.info(nicknames);
 		} else if (nicknames.length == 1) {
 
