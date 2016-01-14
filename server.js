@@ -88,8 +88,8 @@ io.on('connection', function(socket){
 	function updateNicknames(nickname){
 		if (nicknames.length == 0){
 			nicknames.push(nickname);
-
 			//players[0] = nicknames;
+			players[0] = 'white';
 			console.info(nicknames);
 		} else if (nicknames.length == 1) {
 
