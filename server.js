@@ -83,6 +83,7 @@ io.on('connection', function(socket){
 	function updateNicknames(){
 		if (nicknames.length == 0){
 			players[0] = nicknames;
+			console.info(nicknames);
 		} else if (nicknames.length == 1) {
 
 		}
